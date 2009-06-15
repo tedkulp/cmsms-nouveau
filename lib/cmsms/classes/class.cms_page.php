@@ -51,7 +51,7 @@ class CmsPage extends SilkObjectRelationalMapping
 		return $template_content;
 	}
 	
-	function get_content($block_name = 'default')
+	function get_content_block($block_name = 'default', $can_return_new = false)
 	{
 		if (isset($this->blocks[$block_name]))
 		{
@@ -60,9 +60,23 @@ class CmsPage extends SilkObjectRelationalMapping
 				$content = orm('CmsContentBase')->find_by_id($this->blocks[$block_name]['id']);
 				if ($content != null)
 				{
-					return $content->get_content();
+					return $content;
 				}
 			}
+		}
+		
+		if ($can_return_new)
+			return new CmsHtmlContent(); //TODO: Fix me
+		else
+			return null;
+	}
+	
+	function get_content($block_name = 'default')
+	{
+		$block = $this->get_content_block($block_name);
+		if ($block != null)
+		{
+			return $block->get_content();
 		}
 		
 		return '<!-- No content found for ' . $block_name . ' -->';

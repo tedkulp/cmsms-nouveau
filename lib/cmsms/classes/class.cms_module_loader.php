@@ -41,6 +41,8 @@ class CmsModuleLoader extends SilkObject
 		
 		self::check_core_version($module_list);
 		self::check_dependencies($module_list);
+		
+		self::$module_list = $module_list;
 	}
 	
 	public static function check_core_version(&$module_list)
@@ -134,8 +136,19 @@ class CmsModuleLoader extends SilkObject
 				}
 				else
 				{
+					require_once(join_path(ROOT_DIR, 'modules', $name, $name . '.module.php'));
 					if (class_exists($name) && is_subclass_of($name, 'CmsModuleBase'))
 					{
+						if (isset(self::$module_list[$name]['dependencies']))
+						{
+							foreach (self::$module_list[$name]['dependencies'] as $dep)
+							{
+								self::get_module_class($dep['module']['name']);
+							}
+						}
+						
+						//var_dump('Instantiating: ' . $name);
+						
 						self::$module_list[$name]['object'] = new $name();
 						return self::$module_list[$name]['object'];
 					}

@@ -24,6 +24,15 @@ class CmsModuleBase extends SilkObject
 	{
 		parent::__construct();
 	}
+	
+	function do_action_base($name, $id = '', $params = '', $return_id = '')
+	{
+		return $this->do_action($name, $id, $params, $return_id);
+	}
+	
+	function do_action($name, $id = '', $params = '', $return_id = '')
+	{
+	}
 }
 
 # vim:ts=4 sw=4 noet

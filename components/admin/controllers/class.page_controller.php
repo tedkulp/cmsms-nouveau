@@ -34,6 +34,30 @@ class PageController extends AdminController
 		return $ajax->get_result();
 	}
 	
+	function update_content($params)
+	{
+		$ajax = new SilkAjax();
+		$content = new $params['value'];
+		$target_id = str_replace('select_', '', $params['parent_id']);
+		$ajax->replace_html('#' . $target_id, $content->get_edit_form());
+		$ajax->script('setup_content();');
+		return $ajax->get_result();
+	}
+	
+	function update_page($params)
+	{
+		$page = orm('CmsPage')->load($params['page']);
+		$ajax = new SilkAjax();
+		if ($page)
+		{
+			$page->update_parameters($params['page']);
+		}
+		$this->set('page', $page);
+		$ajax->replace_html('#main_section', $this->render_partial('main_section.tpl'));
+		$ajax->script('reset_main_content();');
+		return $ajax->get_result();
+	}
+	
 	function check_unique_alias($params)
 	{
 		$ajax = new SilkAjax();
@@ -77,6 +101,32 @@ class PageController extends AdminController
 			$ajax->script('$("#alias_ok").attr("style", "color: green;")');
 		}
 		$ajax->script('reset_main_content();');
+		return $ajax->get_result();
+	}
+	
+	function save($params)
+	{
+		$ajax = new SilkAjax();
+		
+		if (isset($params['save']) || isset($params['apply']))
+		{		
+			$page = orm('CmsPage')->load($params['page']);
+			if ($page)
+			{
+				$page->update_parameters($params['page']);
+				if ($page->save())
+				{
+					$ajax->show('.pagemcontainer');
+					$ajax->replace_html('#pagemessage', 'Page Saved');
+					$ajax->script('$(".pagemcontainer").fadeOut(2000)');
+					return $ajax->get_result();
+				}
+			}
+		
+			$ajax->show('.pagemcontainer');
+			$ajax->replace_html('#pagemessage', 'Error Saving Page');
+			$ajax->script('$(".pagemcontainer").fadeOut(2000)');
+		}
 		return $ajax->get_result();
 	}
 }

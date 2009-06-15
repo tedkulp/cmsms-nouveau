@@ -27,6 +27,14 @@ class PageHelper extends SilkHelperBase
 		}
 		return forms()->create_input_options(array('items' => $opt, 'selected_value' => $params['selected']));
 	}
+	
+	function content_type_dropdown_options($params, &$smarty)
+	{
+		$opt = array();
+		$opt['CmsHtmlContent'] = 'HTML Content';
+		$opt['CmsOtherContent'] = 'Other Content';
+		return forms()->create_input_options(array('items' => $opt, 'selected_value' => $params['selected']));
+	}
 }
 
 # vim:ts=4 sw=4 noet

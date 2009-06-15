@@ -1,1 +1,1 @@
-{render_partial template='editform.tpl'}
+[[render_partial template='editform.tpl']]

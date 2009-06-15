@@ -15,35 +15,18 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-#$Id$
 
-class CmsContentBase extends SilkObjectRelationalMapping
+function smarty_function_cms_module($params, &$smarty)
 {
-	var $table = 'content';
-
-	function __construct()
+	$module_name = coalesce_key($params, 'module', '');
+	$action = coalesce_key($params, 'action', 'default');
+	if ($module_name != '')
 	{
-		parent::__construct();
-		$this->type = get_class();
-	}
-	
-	function get_content()
-	{
-		return '';
-	}
-	
-	function get_edit_form($block_name = 'default')
-	{
-		$file_name = underscore(get_class($this));
-		$tpl_file = join_path(dirname(__FILE__), 'content_types', 'templates', 'edit.' . $file_name . '.tpl');
-		if (is_file($tpl_file))
+		$module = CmsModuleLoader::get_module_class($module_name);
+		if ($module)
 		{
-			smarty()->assign_by_ref('obj', $this);
-			smarty()->assign('block_name', $block_name);
-			return smarty()->fetch($tpl_file);
+			return $module->do_action_base($action);
 		}
-		return '';
 	}
 }
 
