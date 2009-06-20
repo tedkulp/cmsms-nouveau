@@ -45,6 +45,11 @@ class CmsPageTree extends SilkTree
 		return self::$instance;
 	}
 	
+	function get_root()
+	{
+		return $this->root;
+	}
+	
 	function getRootNode()
 	{
 		return $this->root;

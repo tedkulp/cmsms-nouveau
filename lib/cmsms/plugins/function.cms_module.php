@@ -18,16 +18,7 @@
 
 function smarty_function_cms_module($params, &$smarty)
 {
-	$module_name = coalesce_key($params, 'module', '');
-	$action = coalesce_key($params, 'action', 'default');
-	if ($module_name != '')
-	{
-		$module = CmsModuleLoader::get_module_class($module_name);
-		if ($module)
-		{
-			return $module->do_action_base($action);
-		}
-	}
+	return CmsModuleBase::cms_module_plugin($params,$smarty);
 }
 
 # vim:ts=4 sw=4 noet

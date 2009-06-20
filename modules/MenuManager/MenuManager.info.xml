@@ -1,0 +1,13 @@
+<module_info>
+	<name>MenuManager</name>
+	<version>2.0</version>
+	<summary>Displays menus based on the CMSMS page structure.</summary>
+	<minimum_core_version>1.99</minimum_core_version>
+	<authors>
+		<author>
+			<name>Ted Kulp</name>
+			<email>ted@cmsmadesimple.org</email>
+		</author>
+	</authors>
+	<admin_interface>true</admin_interface>
+</module_info>

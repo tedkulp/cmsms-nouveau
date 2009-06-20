@@ -124,10 +124,29 @@ class CmsModuleLoader extends SilkObject
 		}
 	}
 	
+	public static function get_proper_module_case($name)
+	{
+		if (self::$module_list != null)
+		{
+			foreach (self::$module_list as $k=>$v)
+			{
+				if (strtolower($k) == strtolower($name))
+				{
+					return $k;
+				}
+			}
+		}
+		
+		return name;
+	}
+	
 	public static function get_module_class($name)
 	{
 		if (self::$module_list != null)
 		{
+			//Make sure we can call modules without checking case
+			$name = self::get_proper_module_case($name);
+			
 			if (isset(self::$module_list[$name]) && self::$module_list[$name]['active'] == true)
 			{
 				if (isset(self::$module_list[$name]['object']))
@@ -150,6 +169,7 @@ class CmsModuleLoader extends SilkObject
 						//var_dump('Instantiating: ' . $name);
 						
 						self::$module_list[$name]['object'] = new $name();
+						self::$module_list[$name]['object']->setup();
 						return self::$module_list[$name]['object'];
 					}
 				}
