@@ -1,0 +1,12 @@
+<module_info>
+	<name>Mail</name>
+	<version>1.0</version>
+	<summary>Does some test things that are really awesome.</summary>
+	<authors>
+		<author>
+			<name>Ted Kulp</name>
+			<email>ted@cmsmadesimple.org</email>
+		</author>
+	</authors>
+	<admin_interface>true</admin_interface>
+</module_info>

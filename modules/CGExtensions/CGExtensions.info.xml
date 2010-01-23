@@ -1,0 +1,18 @@
+<module_info>
+	<name>CGExtensions</name>
+	<version>1.0</version>
+	<summary>Does some test things that are really awesome.</summary>
+	<minimum_core_version>2.0</minimum_core_version>
+	<authors>
+		<author>
+			<name>Robert Campbell</name>
+			<email>calguy1000@cmsmadesimple.org</email>
+		</author>
+	</authors>
+	<dependencies>
+		<module>
+			<name>Mail</name>
+		</module>
+	</dependencies>
+	<admin_interface>true</admin_interface>
+</module_info>
