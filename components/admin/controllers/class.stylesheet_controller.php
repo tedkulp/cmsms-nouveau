@@ -20,7 +20,7 @@ class StylesheetController extends AdminController
 {	
 	function index($params)
 	{
-		$stylesheets = orm('CmsStylesheet')->find_all();
+		$stylesheets = CmsStylesheet::find_all();
 		$this->set('stylesheets', $stylesheets);
 	}
 	

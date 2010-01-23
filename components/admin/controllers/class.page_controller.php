@@ -26,7 +26,7 @@ class PageController extends AdminController
 	function main_content($params)
 	{
 		$page_id = substr($params['node_id'], 5);
-		$page = orm('CmsPage')->find_by_id($page_id);
+		$page = CmsPage::find_by_id($page_id);
 		$this->set('page', $page);
 		$ajax = new SilkAjax();
 		$ajax->replace_html('#main_section', $this->render_partial('main_section.tpl'));
@@ -37,7 +37,11 @@ class PageController extends AdminController
 	function update_content($params)
 	{
 		$ajax = new SilkAjax();
-		$content = new $params['value'];
+		$page = CmsPage::load($params['page_id']);
+		$name = substr($params['name'], 11, -1);
+		$content = $page->get_content_block($name, true);
+		if ($content == null || get_class($content) != $params['value'])
+			$content = new $params['value'];
 		$target_id = str_replace('select_', '', $params['parent_id']);
 		$ajax->replace_html('#' . $target_id, $content->get_edit_form());
 		$ajax->script('setup_content();');
@@ -46,7 +50,7 @@ class PageController extends AdminController
 	
 	function update_page($params)
 	{
-		$page = orm('CmsPage')->load($params['page']);
+		$page = CmsPage::load($params['page']);
 		$ajax = new SilkAjax();
 		if ($page)
 		{
@@ -61,7 +65,7 @@ class PageController extends AdminController
 	function check_unique_alias($params)
 	{
 		$ajax = new SilkAjax();
-		$count = orm('CmsPage')->find_count(array('conditions' => array('unique_alias = ? AND id != ?', $params['alias'], $params['page_id'])));
+		$count = CmsPage::find_count(array('conditions' => array('unique_alias = ? AND id != ?', $params['alias'], $params['page_id'])));
 		if ($params['alias'] == '')
 		{
 			$ajax->replace_html('#unique_alias_ok', 'Empty');
@@ -84,7 +88,7 @@ class PageController extends AdminController
 	function check_alias($params)
 	{
 		$ajax = new SilkAjax();
-		$count = orm('CmsPage')->find_count(array('conditions' => array('alias = ? AND id != ?', $params['alias'], $params['page_id'])));
+		$count = CmsPage::find_count(array('conditions' => array('alias = ? AND id != ?', $params['alias'], $params['page_id'])));
 		if ($params['alias'] == '')
 		{
 			$ajax->replace_html('#alias_ok', 'Empty');
@@ -110,7 +114,7 @@ class PageController extends AdminController
 		
 		if (isset($params['save']) || isset($params['apply']))
 		{		
-			$page = orm('CmsPage')->load($params['page']);
+			$page = CmsPage::load($params['page']);
 			if ($page)
 			{
 				$page->update_parameters($params['page']);

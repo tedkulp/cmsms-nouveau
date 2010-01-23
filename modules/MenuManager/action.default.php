@@ -24,19 +24,19 @@ if (isset($params['start_page']) || isset($params['start_element']))
 			$parent_node = $root_node->get_parent();
 			if ($parent_node != null)
 			{
-				$this->display_menu($parent_node->get_children(), $params);
+				$this->module->display_menu($parent_node->get_children(), $params);
 			}
 		}
 		else if (isset($params['show_only_children']) && $params['show_only_children'])
 		{
-			$this->display_menu($root_node->get_children(), $params);
+			$this->module->display_menu($root_node->get_children(), $params);
 		}
 		else
 		{
 			//Hack alert!
 			//Make an array of one and pass that
 			$ary = array($root_node);
-			$this->display_menu($ary, $params);
+			$this->module->display_menu($ary, $params);
 		}
 	}
 }
@@ -52,7 +52,7 @@ else if (isset($params['start_level']) && $params['start_level'] > 1)
 			$parent_node = $tree->get_node_by_id($ids[$params['start_level'] - 2]);
 			if ($parent_node != null && $parent_node->has_children())
 			{
-				$this->display_menu($parent_node->get_children(), $params);
+				$this->module->display_menu($parent_node->get_children(), $params);
 			}
 		}
 	}
@@ -80,12 +80,12 @@ else if (isset($params['items']))
 	{
 		$params['number_of_levels'] = 1;
 
-		$this->display_menu($result, $params);
+		$this->module->display_menu($result, $params);
 	}
 }
 else
 {
-	$this->display_menu(CmsPageTree::get_instance()->get_root_node()->get_children(), $params);
+	$this->module->display_menu(CmsPageTree::get_instance()->get_root_node()->get_children(), $params);
 }
 
 SilkProfiler::get_instance()->mark('End of Menu Manager Display');

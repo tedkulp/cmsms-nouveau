@@ -95,6 +95,9 @@ class CmsModuleRequest extends SilkObject
 	 **/
 	function __call($function, $arguments)
 	{
+		if ($arguments == null)
+			$arguments = array();
+		
 		if ($this->module != null)
 		{
 			if (method_exists($this->module, $function))
@@ -118,6 +121,12 @@ class CmsModuleRequest extends SilkObject
 	 */
 	public function do_action($action_name, $params)
 	{
+		//In case the module overrides it
+		if (method_exists($this->module, 'do_action'))
+		{
+			return $this->module->do_action($this, $action_name, $params);
+		}
+		
 		$return_id = $this->return_id; //avoid confusion
 		$returnid = $return_id;
 

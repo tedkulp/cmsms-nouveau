@@ -53,7 +53,9 @@ class CmsRoute extends SilkObject
 	{
 		CmsModuleLoader::load_module_data();
 		
-		echo SilkCache::get_instance()->call('CmsRoute::_run', $params, $page);
+		//TODO: This is a full page cahce.  It needs options.
+		//echo SilkCache::get_instance()->call('CmsRoute::_run', $params, $page);
+		echo CmsRoute::_run($params, $page);
 		
 		//TODO: Remove me
 		echo SilkProfiler::get_instance()->report();
@@ -67,6 +69,9 @@ class CmsRoute extends SilkObject
 			return $page_obj->display();
 		}
 		
+		//TODO: This is where we do some 404 logic.
+		var_dump('404');
+		
 		return '';
 	}
 	
@@ -75,15 +80,10 @@ class CmsRoute extends SilkObject
 		$page_obj = null;
 		
 		if ($page == '' || $page == '/')
-			$page_obj = orm('CmsPage')->find_by_default_page(true);
+			$page_obj = CmsPage::find_by_default_page(true);
 		else
-			$page_obj = orm('CmsPage')->find_by_hierarchy_path($page);
+			$page_obj = CmsPage::find_by_hierarchy_path($page);
 		
-		if ($page_obj == null)
-		{
-			var_dump('404 here');
-		}
-	
 		return $page_obj;
 	}
 }

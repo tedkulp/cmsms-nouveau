@@ -51,7 +51,7 @@ class CmsModuleBase extends SilkObject
 			$module = CmsModuleLoader::get_module_class($module_name);
 			if ($module)
 			{
-				@ob_start();
+				//@ob_start();
 				
 				$id = '1';
 				
@@ -61,10 +61,10 @@ class CmsModuleBase extends SilkObject
 				{
 					echo $result;
 				}
-				$modresult = @ob_get_contents();
-				@ob_end_clean();
+				//$modresult = @ob_get_contents();
+				//@ob_end_clean();
 				
-				return $modresult;
+				//return $modresult;
 			}
 		}
 	}

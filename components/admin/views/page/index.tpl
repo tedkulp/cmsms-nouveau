@@ -83,7 +83,7 @@
 		{
 			$(this).delayedObserver(function()
 			{
-				silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_content'))[[/php]]', [{name:'parent_id', value:$(this).attr('id')}, {name:'name', value:$(this).attr('name')}, {name:'value', value:$(this).val()}]);
+				silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_content'))[[/php]]', [{name:'parent_id', value:$(this).attr('id')}, {name:'name', value:$(this).attr('name')}, {name:'value', value:$(this).val()}, {name:'page_id', value:$('#page_id').html()}]);
 			}, 0.5, { event: 'change'});
 		});
 	}

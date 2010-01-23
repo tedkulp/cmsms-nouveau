@@ -51,6 +51,35 @@ class CmsPage extends SilkObjectRelationalMapping
 		return $template_content;
 	}
 	
+	function get_url($rewrite = true, $lang = '')
+	{
+		$url = SilkRequest::get_calculated_url_base() . $this->hierarchy_path();
+		
+		/*
+		$config = cms_config();
+		$alias = ($this->alias != ''?$this->alias:$this->id);
+		if ($config["assume_mod_rewrite"] && $rewrite == true)
+		{
+			$url = $config['root_url']. '/' . ($lang != '' ? "$lang/" : '') . $this->HierarchyPath() . (isset($config['page_extension'])?$config['page_extension']:'.html');
+		}
+		else
+		{
+			if (isset($_SERVER['PHP_SELF']) && $config['internal_pretty_urls'] == true)
+			{
+				$url = $config['root_url'] . '/index.php/' . ($lang != '' ? "$lang/" : '') . $this->HierarchyPath() . (isset($config['page_extension']) ? $config['page_extension
+					'] : '.html');
+			}
+			else
+			{
+				$url = $config['root_url'] . '/index.php?' . $config['query_var'] . '=' . $alias . ($lang != '' ? '&amp;lang=' . $lang : '');
+			}
+		}
+		*/
+		
+		return $url;
+	}
+
+	
 	function get_content_block($block_name = 'default', $can_return_new = false)
 	{
 		if (isset($this->blocks[$block_name]))

@@ -20,7 +20,7 @@ class PageTemplateController extends AdminController
 {
 	function index($params)
 	{
-		$templates = orm('CmsTemplate')->find_all();
+		$templates = CmsTemplate::find_all();
 		$this->set('templates', $templates);
 	}
 	
@@ -52,7 +52,7 @@ class PageTemplateController extends AdminController
 			SilkResponse::redirect_to_action(array('controller' => 'page_template', 'action' => 'index'));
 		}
 
-		$template = orm('cms_template')->find_by_id($params['id']);
+		$template = CmsTemplate::find_by_id($params['id']);
 		if ($params['submit'] || $params['apply'])
 		{
 			$template->update_parameters($params['template']);

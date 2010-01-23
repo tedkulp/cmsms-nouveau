@@ -162,7 +162,7 @@ class MenuManager extends CmsModuleBase
 	[[foreach from=$nodelist item=node]]
 	[[if $node->show]]
 		<li>
-			<a href="[[$node->url]]">[[$node->menutext]]</a>
+			<a href="[[$node->get_url()]]">[[$node->menu_text]]</a>
 			[[menu_children node=$node]]
 		</li>
 	[[/if]]
