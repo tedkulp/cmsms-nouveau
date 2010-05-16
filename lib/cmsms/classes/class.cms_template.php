@@ -117,21 +117,17 @@ class CmsTemplate extends SilkObjectRelationalMapping
 		$this->blocks = array();
 		
 		$old_function = $smarty->_plugins['function']['content'];
-		$smarty->register_function('content', array($this, 'parse_block_callback'));
+		$smarty->register->templateFunction('content', array($this, 'parse_block_callback'));
 		
-		$smarty->_compile_source('temporary template', $this->content, $_compiled);
-		@ob_start();
-		$smarty->_eval('?>' . $_compiled);
-		$_contents = @ob_get_contents();
-		@ob_end_clean();
+		$smarty->fetch("string:" . $this->content);
 		
-		$smarty->unregister_function('content');
+		$smarty->unregister->templateFunction('content');
 		$smarty->_plugins['function']['content'] = $old_function;
 		
 		return $this->blocks;
 	}
 	
-	public function parse_block_callback($params, &$smarty)
+	public function parse_block_callback($params, $smarty)
 	{
 		$name = 'default';
 		if (isset($params['block']))

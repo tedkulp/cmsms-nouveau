@@ -18,7 +18,7 @@
 
 class PageHelper extends SilkHelperBase
 {
-	function page_template_dropdown_options($params, &$smarty)
+	function page_template_dropdown_options($params, $smarty)
 	{
 		$opt = array();
 		foreach (orm('CmsTemplate')->find_all_by_active(true) as $tpl)
@@ -28,7 +28,7 @@ class PageHelper extends SilkHelperBase
 		return forms()->create_input_options(array('items' => $opt, 'selected_value' => $params['selected']));
 	}
 	
-	function content_type_dropdown_options($params, &$smarty)
+	function content_type_dropdown_options($params, $smarty)
 	{
 		$opt = array();
 		$opt['CmsHtmlContent'] = 'HTML Content';

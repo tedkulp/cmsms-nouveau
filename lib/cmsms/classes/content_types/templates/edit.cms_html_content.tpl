@@ -1,1 +1,1 @@
-[[textarea name="block[$block_name][contents]" value=$obj->contents]]
+{textarea name="block[$block_name][contents]" value=$obj->contents}

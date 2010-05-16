@@ -16,7 +16,7 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-function smarty_function_cms_validation_errors($params, &$smarty)
+function smarty_function_cms_validation_errors($params, $smarty)
 {
 	$default_params = array(
 		'for' => coalesce_key($params, 'for', null),
@@ -34,7 +34,7 @@ function smarty_function_cms_validation_errors($params, &$smarty)
 			echo '<p class="pagemessage">';
 			foreach ($params['for']->validation_errors as $err)
 			{
-				echo '<img class="systemicon" title="Sucesso" alt="Sucesso" src="' . $smarty->get_template_vars('layout_root_url') . '/images/icons/system/stop.gif" />'.$err.'<br />';
+				echo '<img class="systemicon" title="Sucesso" alt="Sucesso" src="' . $smarty->getTemplateVars('layout_root_url') . '/images/icons/system/stop.gif" />'.$err.'<br />';
 			}
 			echo '</p>';
 			echo '</div>';

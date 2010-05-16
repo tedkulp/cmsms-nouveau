@@ -39,7 +39,7 @@ class CmsContentBase extends SilkObjectRelationalMapping
 		$tpl_file = join_path(dirname(__FILE__), 'content_types', 'templates', 'edit.' . $file_name . '.tpl');
 		if (is_file($tpl_file))
 		{
-			smarty()->assign_by_ref('obj', $this);
+			smarty()->assignByRef('obj', $this);
 			smarty()->assign('block_name', $block_name);
 			return smarty()->fetch($tpl_file);
 		}

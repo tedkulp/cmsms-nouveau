@@ -1,4 +1,4 @@
-[[assign var='page' value=$tree->get_root_node()]]
+{assign var='page' value=$tree->get_root_node()}
 
 <h2>Content</h2>
 
@@ -8,10 +8,9 @@
 <ul>
 	<li id="node_1" class="open">
 		<a href="#">ROOT</a>
-		[[if $page->has_children()]]
-			[[assign var='subpages' value=$page->get_children()]]
-			[[render_partial template='branch.tpl']]
-		[[/if]]
+		{if $page->has_children()}
+			{render_partial template='branch.tpl' subpages=$page->get_children()}
+		{/if}
 	</li>
 </ul>
 </div>
@@ -38,7 +37,7 @@
 				{
 					if (node.id != 'node_1')
 					{
-						silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'main_content'))[[/php]]', [{name:'node_id', value:node.id}]);
+						silk_ajax_call('{php}echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'main_content'));{/php}', [{ name:'node_id', value:node.id }]);
 					}
 					else
 					{
@@ -64,16 +63,16 @@
 		setup_form();
 		$('#unique_alias').delayedObserver(function()
 		{
-			silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'check_unique_alias'))[[/php]]', [{name:'alias', value:$('#unique_alias').val()}, {name:'page_id', value:$('#page_id').html()}]);
+			silk_ajax_call('{php}echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'check_unique_alias'));{/php}', [{ name:'alias', value:$('#unique_alias').val() }, { name:'page_id', value:$('#page_id').html() }]);
 		}, 0.5);
 		$('#alias').delayedObserver(function()
 		{
-			silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'check_alias'))[[/php]]', [{name:'alias', value:$('#alias').val()}, {name:'page_id', value:$('#page_id').html()}]);
+			silk_ajax_call('{php}echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'check_alias'));{/php}', [{ name:'alias', value:$('#alias').val() }, { name:'page_id', value:$('#page_id').html() }]);
 		}, 0.5);
 		$('#page_template_id').delayedObserver(function()
 		{
-			silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_page'))[[/php]]', $('#form_save').serializeArray());
-		}, 0.5, { event: 'change'});
+			silk_ajax_call('{php}echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_page'));{/php}', $('#form_save').serializeArray());
+		}, 0.5, { event: 'change' });
 		setup_content();
 	}
 	
@@ -83,8 +82,8 @@
 		{
 			$(this).delayedObserver(function()
 			{
-				silk_ajax_call('[[php]]echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_content'))[[/php]]', [{name:'parent_id', value:$(this).attr('id')}, {name:'name', value:$(this).attr('name')}, {name:'value', value:$(this).val()}, {name:'page_id', value:$('#page_id').html()}]);
-			}, 0.5, { event: 'change'});
+				silk_ajax_call('{php}echo SilkResponse::create_url(array('controller' => 'page', 'action' => 'update_content'));{/php}', [{ name:'parent_id', value:$(this).attr('id') }, { name:'name', value:$(this).attr('name') }, { name:'value', value:$(this).val() }, { name:'page_id', value:$('#page_id').html() }]);
+			}, 0.5, { event: 'change' });
 		});
 	}
 	
@@ -92,4 +91,4 @@
 	{
 		reset_main_content();
 	});
-//]]></script>
+//}></script>

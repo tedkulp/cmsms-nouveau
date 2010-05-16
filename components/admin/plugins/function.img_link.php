@@ -1,7 +1,7 @@
 <?php // -*- mode:php; tab-width:4; indent-tabs-mode:t; c-basic-offset:4; -*-
 // The MIT License
 // 
-// Copyright (c) 2008 Ted Kulp
+// Copyright (c) 2008-2010 Ted Kulp
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-function smarty_function_img_link($params, &$smarty)
+function smarty_function_img_link($params, $smarty)
 {
 	if ($params['src'])
 	{
-		$txt = '<img src="' . $smarty->get_template_vars('layout_root_url') . '/' . $params['src'] . '"';
+		$txt = '<img src="' . $smarty->getTemplateVars('layout_root_url') . '/' . $params['src'] . '"';
 		if ($params['alt'])
 		{
 			$txt .= ' alt="' . $params['alt'] . '"';

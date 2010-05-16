@@ -2,7 +2,7 @@
 	<div class="pageheader">Page Templates
 		<span class="helptext">
 			<a href="http://wiki.cmsmadesimple.org/index.php/User_Handbook/Admin_Panel/Layout/Templates" rel="external">
-				<img src="[[$layout_root_url]]/images/icons/system/info-external.gif" class="systemicon" alt="Help" title="Help" />
+				<img src="{$layout_root_url}/images/icons/system/info-external.gif" class="systemicon" alt="Help" title="Help" />
 			</a>
 			<a href="http://wiki.cmsmadesimple.org/index.php/User_Handbook/Admin_Panel/Layout/Templates" rel="external">Help</a> (new window)
 		</span>
@@ -20,15 +20,15 @@
 		</tr>
 	</thead>
 	<tbody id="tablebody">
-		[[render_partial template='indextablebody.tpl']]
+		{render_partial template='indextablebody.tpl'}
 	</tbody>
 </table>
 
 <div class="pageoptions">
 	<p class="pageoptions">
 		<span style="float: left;">
-			<a href="[[link only_href='true' controller='page_template' action='add']]"><img src="[[$layout_root_url]]/images/icons/system/newobject.gif" class="systemicon" alt="Add New Template" title="Add New Template" /></a>
-			[[link html_class="pageoptions" text="Add Template" controller="page_template" action="add"]]
+			<a href="{link only_href='true' controller='page_template' action='add'}"><img src="{$layout_root_url}/images/icons/system/newobject.gif" class="systemicon" alt="Add New Template" title="Add New Template" /></a>
+			{link html_class="pageoptions" text="Add Template" controller="page_template" action="add"}
 		</span>
 	</p>
 </div>

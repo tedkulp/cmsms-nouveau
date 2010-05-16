@@ -142,7 +142,7 @@ class CmsModuleRequest extends SilkObject
 					$smarty = smarty();
 					$id = $this->id;
 
-					$smarty->assign_by_ref('request', $this);
+					$smarty->assignByRef('request', $this);
 					$smarty->assign('module_action',$action_name);
 
 					include($filename);

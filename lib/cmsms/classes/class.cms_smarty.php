@@ -27,7 +27,7 @@ class CmsSmarty extends SilkSmarty
 	function __construct()
 	{
 		parent::__construct();
-		$this->register_resource("template", array(&$this, "template_get_template",
+		$this->register->resource("template", array(&$this, "template_get_template",
 					"template_get_timestamp",
 					"db_get_secure",
 					"db_get_trusted"));

@@ -32,7 +32,7 @@ class MenuManager extends CmsModuleBase
 	
 	public function menu_children_plugin_callback($params, &$smarty)
 	{
-		$orig_params = $smarty->get_template_vars('orig_params');
+		$orig_params = $smarty->getTemplateVars('orig_params');
 		$params = array_merge($orig_params, $params);
 		
 		if (!isset($params['node']))
@@ -90,7 +90,7 @@ class MenuManager extends CmsModuleBase
 			
 			$smarty = smarty();
 			$smarty->assign('count', count($nodes));
-			$smarty->assign_by_ref('nodelist', $nodes);
+			$smarty->assignByRef('nodelist', $nodes);
 
 			if ($first_call)
 			{

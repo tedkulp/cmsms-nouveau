@@ -28,7 +28,7 @@ class PageTemplateHelper extends SilkHelperBase
 		return $string . " - modifying some stuff";
 	}
 	
-	function block_another_test($params, $content, &$smarty, &$repeat)
+	function block_another_test($params, $content, $smarty, $repeat)
 	{
 		if(!$repeat)
 		{

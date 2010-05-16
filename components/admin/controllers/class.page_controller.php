@@ -115,6 +115,7 @@ class PageController extends AdminController
 		if (isset($params['save']) || isset($params['apply']))
 		{		
 			$page = CmsPage::load($params['page']);
+			var_dump($params['page']);
 			if ($page)
 			{
 				$page->update_parameters($params['page']);
