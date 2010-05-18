@@ -19,7 +19,7 @@
 function smarty_function_content($params, &$smarty)
 {
 	$block_name = coalesce_key($params, 'block', coalesce_key($params, 'name', 'default'));
-	$page = smarty()->get_registered_object('current_page');
+	$page = smarty()->getRegisteredObject('current_page');
 	if ($page)
 	{
 		return $page->get_content($block_name);

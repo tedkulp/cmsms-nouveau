@@ -112,4 +112,4 @@
 
 </body>
 </html>
-{php}echo SilkProfiler::get_instance()->report();{/php}
+{php}echo \SilkProfiler::get_instance()->report();{/php}

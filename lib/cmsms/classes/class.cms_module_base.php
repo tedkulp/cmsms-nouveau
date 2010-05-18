@@ -18,7 +18,7 @@
 #
 #$Id$
 
-class CmsModuleBase extends SilkObject
+class CmsModuleBase extends \silk\core\Object
 {
 	function __construct()
 	{
@@ -85,7 +85,7 @@ class CmsModuleBase extends SilkObject
 		if ($plugin_name == '')
 			$plugin_name = $this->get_name();
 
-		smarty()->register_function($plugin_name, array($this, $method_name));
+		smarty()->register->templateFunction($plugin_name, array($this, $method_name));
 	}
 
 	
@@ -96,11 +96,7 @@ class CmsModuleBase extends SilkObject
 	public function process_template_from_data($data)
 	{
 		$smarty = smarty();
-		$smarty->_compile_source('temporary template', $data, $_compiled );
-		@ob_start();
-		$smarty->_eval('?>' . $_compiled);
-		$_contents = @ob_get_contents();
-		@ob_end_clean();
+		$_contents = $smarty->fetch("string:" . $data);
 		return $_contents;
 	}
 

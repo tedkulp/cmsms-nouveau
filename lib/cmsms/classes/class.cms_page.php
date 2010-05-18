@@ -46,7 +46,7 @@ class CmsPage extends SilkObjectRelationalMapping
 	
 	function display()
 	{
-		smarty()->register_object('current_page', $this);
+		smarty()->register->templateObject('current_page', $this);
 		$template_content = $this->template->process();
 		return $template_content;
 	}

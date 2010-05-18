@@ -30,7 +30,7 @@ class MenuManager extends CmsModuleBase
 		$this->register_module_plugin('menu_children', 'menu_children_plugin_callback');
 	}
 	
-	public function menu_children_plugin_callback($params, &$smarty)
+	public function menu_children_plugin_callback($params, $smarty)
 	{
 		$orig_params = $smarty->getTemplateVars('orig_params');
 		$params = array_merge($orig_params, $params);
@@ -157,18 +157,18 @@ class MenuManager extends CmsModuleBase
 
 	function get_default_template()
 	{
-		return '[[if $count > 0]]
+		return '{if $count > 0}
 <ul>
-	[[foreach from=$nodelist item=node]]
-	[[if $node->show]]
+	{foreach from=$nodelist item=node}
+	{if $node->show}
 		<li>
-			<a href="[[$node->get_url()]]">[[$node->menu_text]]</a>
-			[[menu_children node=$node]]
+			<a href="{$node->get_url()}">{$node->menu_text}</a>
+			{menu_children node=$node}
 		</li>
-	[[/if]]
-	[[/foreach]]
+	{/if}
+	{/foreach}
 </ul>
-[[/if]]
+{/if}
 ';
 	}
 

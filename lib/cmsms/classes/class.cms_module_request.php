@@ -31,7 +31,7 @@
  * @lastmodified $Date$
  * @license GPL
  */
-class CmsModuleRequest extends SilkObject
+class CmsModuleRequest extends \silk\core\Object
 {
 	var $module = null;
 	var $id = '';

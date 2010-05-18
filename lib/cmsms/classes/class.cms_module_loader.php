@@ -18,7 +18,7 @@
 #
 #$Id$
 
-class CmsModuleLoader extends SilkObject
+class CmsModuleLoader extends \silk\core\Object
 {
 	public static $module_list = null;
 	

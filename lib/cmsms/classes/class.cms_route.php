@@ -24,7 +24,7 @@
  * @author Ted Kulp
  * @since 2.0
  **/
-class CmsRoute extends SilkObject
+class CmsRoute extends \silk\core\Object
 {
 	var $module;
 	var $regex;
@@ -45,7 +45,7 @@ class CmsRoute extends SilkObject
 		}
 		
 		//TODO: Remove me
-		echo SilkProfiler::get_instance()->report();
+		echo \SilkProfiler::get_instance()->report();
 	}
 	*/
 	
@@ -58,7 +58,7 @@ class CmsRoute extends SilkObject
 		echo CmsRoute::_run($params, $page);
 		
 		//TODO: Remove me
-		echo SilkProfiler::get_instance()->report();
+		echo \SilkProfiler::get_instance()->report();
 	}
 	
 	public static function _run($params, $page)

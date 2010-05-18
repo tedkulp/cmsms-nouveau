@@ -27,15 +27,15 @@ class CmsSmarty extends SilkSmarty
 	function __construct()
 	{
 		parent::__construct();
-		$this->register->resource("template", array(&$this, "template_get_template",
+		$this->register->resource("template", array($this, "template_get_template",
 					"template_get_timestamp",
 					"db_get_secure",
 					"db_get_trusted"));
 	}
 	
-	function template_get_template($tpl_name, &$tpl_source, &$smarty_obj)
+	function template_get_template($tpl_name, &$tpl_source, $smarty_obj)
 	{
-		$template = orm('CmsTemplate')->find_by_id($tpl_name);
+		$template = CmsTemplate::find_by_id($tpl_name);
 		if ($template)
 		{
 			$tpl_source = $template->content;
@@ -44,9 +44,9 @@ class CmsSmarty extends SilkSmarty
 		return false;
 	}
 
-	function template_get_timestamp($tpl_name, &$tpl_timestamp, &$smarty_obj)
+	function template_get_timestamp($tpl_name, &$tpl_timestamp, $smarty_obj)
 	{
-		$template = orm('CmsTemplate')->find_by_id($tpl_name);
+		$template = CmsTemplate::find_by_id($tpl_name);
 		if ($template)
 		{
 			$tpl_timestamp = $template->modified_date->timestamp();
