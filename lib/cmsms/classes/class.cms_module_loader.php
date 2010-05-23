@@ -18,6 +18,8 @@
 #
 #$Id$
 
+use \silk\performance\Cache;
+
 class CmsModuleLoader extends \silk\core\Object
 {
 	public static $module_list = null;
@@ -30,7 +32,7 @@ class CmsModuleLoader extends \silk\core\Object
 	public static function load_module_data()
 	{
 		$files = CmsModuleLoader::find_module_info_files(); //Actually slower if it's cached -- have to retest with lots of modules
-		$installed_data = SilkCache::get_instance()->call('CmsModuleLoader::get_installed_module_details');
+		$installed_data = Cache::get_instance()->call('CmsModuleLoader::get_installed_module_details');
 		$module_list = array();
 		foreach ($files as $one_file)
 		{

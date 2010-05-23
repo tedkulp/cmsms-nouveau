@@ -1,5 +1,5 @@
 <?php
-SilkProfiler::get_instance()->mark('Start of Menu Manager Display');
+\silk\performance\Profiler::get_instance()->mark('Start of Menu Manager Display');
 
 $root_node = null;
 
@@ -88,6 +88,6 @@ else
 	$this->module->display_menu(CmsPageTree::get_instance()->get_root_node()->get_children(), $params);
 }
 
-SilkProfiler::get_instance()->mark('End of Menu Manager Display');
+\silk\performance\Profiler::get_instance()->mark('End of Menu Manager Display');
 
 ?>

@@ -18,6 +18,8 @@
 #
 #$Id$
 
+use \silk\performance\Cache;
+
 /**
  * Class to handle url routes for modules to handle pretty urls.
  *
@@ -38,14 +40,14 @@ class CmsRoute extends \silk\core\Object
 	/*
 	public static function run($params, $page)
 	{
-		$page_obj = SilkCache::get_instance()->call('CmsRoute::match_route', $page);
+		$page_obj = Cache::get_instance()->call('CmsRoute::match_route', $page);
 		if ($page_obj)
 		{
-			echo SilkCache::get_instance()->call(array($page_obj, 'display'));
+			echo Cache::get_instance()->call(array($page_obj, 'display'));
 		}
 		
 		//TODO: Remove me
-		echo \SilkProfiler::get_instance()->report();
+		echo \silk\performance\Profiler::get_instance()->report();
 	}
 	*/
 	
@@ -54,11 +56,8 @@ class CmsRoute extends \silk\core\Object
 		CmsModuleLoader::load_module_data();
 		
 		//TODO: This is a full page cahce.  It needs options.
-		//echo SilkCache::get_instance()->call('CmsRoute::_run', $params, $page);
+		//echo Cache::get_instance()->call('CmsRoute::_run', $params, $page);
 		echo CmsRoute::_run($params, $page);
-		
-		//TODO: Remove me
-		echo \SilkProfiler::get_instance()->report();
 	}
 	
 	public static function _run($params, $page)

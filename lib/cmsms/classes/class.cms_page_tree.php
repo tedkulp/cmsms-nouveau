@@ -16,6 +16,8 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+use \silk\performance\Cache;
+
 /**
  * Classes for storing the frontend page hierarchy.  Includes methods to load
  * the structure from the database and properly return related Content objects.
@@ -142,7 +144,7 @@ class CmsPageTree extends SilkTree
 	public function get_node_by_alias($alias)
 	{
 		$result = null;
-		$id = SilkCache::get_instance()->call('CmsContentOperations::get_page_id_from_alias', $alias);
+		$id = Cache::get_instance()->call('CmsContentOperations::get_page_id_from_alias', $alias);
 		if ($id)
 		{
 			$result = $this->get_node_by_id($id);
@@ -163,7 +165,7 @@ class CmsPageTree extends SilkTree
 	function get_node_by_hierarchy($position)
 	{
 		$result = null;
-		$id = SilkCache::get_instance()->call('CmsContentOperations::get_page_id_from_hierarchy', $position);
+		$id = Cache::get_instance()->call('CmsContentOperations::get_page_id_from_hierarchy', $position);
 		if ($id)
 		{
 			$result = $this->get_node_by_id($id);
