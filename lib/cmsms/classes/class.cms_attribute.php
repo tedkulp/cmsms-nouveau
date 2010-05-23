@@ -23,7 +23,7 @@
  * @author Ted Kulp
  * @since 2.0
  **/
-class CmsAttribute extends SilkObjectRelationalMapping
+class CmsAttribute extends \silk\orm\ActiveRecord
 {
 	var $params = array('id' => -1);
 	var $table = 'attributes';

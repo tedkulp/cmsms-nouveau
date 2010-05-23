@@ -18,9 +18,9 @@
 #
 #$Id$
 
-use \silk\orm\ObjectRelationalMapping;
+use \silk\orm\ActiveRecord;
 
-class CmsContentBase extends ObjectRelationalMapping
+class CmsContentBase extends ActiveRecord
 {
 	var $table = 'content';
 

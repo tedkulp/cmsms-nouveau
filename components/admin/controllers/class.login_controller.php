@@ -16,11 +16,13 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+use \silk\auth\UserSession;
+
 class LoginController extends \silk\action\Controller
 {
 	function index($params)
 	{
-		$user_session = new SilkUserSession($params['login']);
+		$user_session = new UserSession($params['login']);
 		if ($user_session->login())
 		{
 			//redirect('')

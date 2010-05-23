@@ -22,7 +22,7 @@
  * @author Ted Kulp
  * @since 2.0
  **/
-class CmsSmarty extends SilkSmarty
+class CmsSmarty extends \silk\display\Smarty
 {
 	function __construct()
 	{

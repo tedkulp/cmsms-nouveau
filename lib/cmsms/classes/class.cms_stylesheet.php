@@ -16,7 +16,7 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-use \silk\orm\ObjectRelationalMapping;
+use \silk\orm\ActiveRecord;
 
 /**
  * Represents a stylesheet in the database.
@@ -24,7 +24,7 @@ use \silk\orm\ObjectRelationalMapping;
  * @author Ted Kulp
  * @since 0.11
  **/
-class CmsStylesheet extends ObjectRelationalMapping
+class CmsStylesheet extends ActiveRecord
 {
 	var $params = array('id' => -1, 'name' => '', 'value' => '', 'media_type' => 'all', 'active' => 1);
 	var $table = 'stylesheets';

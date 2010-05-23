@@ -45,7 +45,7 @@ class AdminController extends \silk\action\Controller
 	
 	function before_filter()
 	{
-		//$this->check_access(SilkUserSession::is_logged_in());
+		//$this->check_access(\silk\auth\UserSession::is_logged_in());
 		SilkDatabase::disable_caching();
 	}
 }
