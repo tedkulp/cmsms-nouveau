@@ -18,7 +18,9 @@
 #
 #$Id$
 
-class CmsTemplateStylesheetAssociation extends SilkObjectRelationalMapping
+use \silk\orm\ObjectRelationalMapping;
+
+class CmsTemplateStylesheetAssociation extends ObjectRelationalMapping
 {
 	var $table = 'stylesheet_template_assoc';
 	var $list_filter_fields = array('template_id'); //So order only counts when it's the same template_id

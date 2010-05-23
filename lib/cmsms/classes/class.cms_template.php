@@ -16,13 +16,15 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+use \silk\orm\ObjectRelationalMapping;
+
 /**
  * Represents a template in the database.
  *
  * @author Ted Kulp
  * @since 2.0
  **/
-class CmsTemplate extends SilkObjectRelationalMapping
+class CmsTemplate extends ObjectRelationalMapping
 {	
 	var $params = array('id' => -1, 'name' => '', 'content' => '', 'stylesheet' => '', 'encoding' => '', 'active' => true, 'default' => false);
 	var $field_maps = array('template_name' => 'name', 'default_template' => 'default', 'template_content' => 'content');

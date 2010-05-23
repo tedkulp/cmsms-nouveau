@@ -18,7 +18,9 @@
 #
 #$Id$
 
-class CmsContentBase extends SilkObjectRelationalMapping
+use \silk\orm\ObjectRelationalMapping;
+
+class CmsContentBase extends ObjectRelationalMapping
 {
 	var $table = 'content';
 

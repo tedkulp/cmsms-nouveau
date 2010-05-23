@@ -16,6 +16,8 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+use \silk\orm\ObjectRelationalMapping;
+
 /**
  * Base page class.  Extend this to create new content types for
  * the system.
@@ -23,7 +25,7 @@
  * @author Ted Kulp
  * @since 2.0
  **/
-class CmsPage extends SilkObjectRelationalMapping
+class CmsPage extends ObjectRelationalMapping
 {
 	var $table = 'pages';
 	var $params = array('id' => -1, 'template_id' => -1, 'active' => true, 'default_content' => false, 'parent_id' => -1, 'lft' => 1, 'rgt' => 1, 'blocks' => array());
